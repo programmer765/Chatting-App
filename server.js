@@ -18,8 +18,17 @@ const pusher = new Pusher({
   useTLS: true,
 });
 
+const corsOptions = {
+  origin: [
+    "https://dainty-zuccutto-0a29a5.netlify.app/",
+    "http://localhost:3000",
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // mongodb url
 const url = `mongodb+srv://admin:${process.env.password}@cluster0.dpjstd6.mongodb.net/whatsappdb?retryWrites=true&w=majority`;
