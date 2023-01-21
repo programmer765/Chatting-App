@@ -18,20 +18,23 @@ const pusher = new Pusher({
   useTLS: true,
 });
 
-const corsOptions = {
-  origin: [
-    "https://dainty-zuccutto-0a29a5.netlify.app",
-    "http://localhost:3000",
-  ],
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: [
+//     "https://dainty-zuccutto-0a29a5.netlify.app",
+//     "http://localhost:3000",
+//   ],
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+// };
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.all((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://dainty-zuccutto-0a29a5.netlify.app"
+  );
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
   res.setHeader(
     "Access-Control-Allow-Methods",
